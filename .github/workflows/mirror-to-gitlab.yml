@@ -47,6 +47,8 @@ jobs:
           # 3) Point a 'gitlab' remote at the destination (token kept out of the URL log).
           git remote add gitlab "https://${GITLAB_USERNAME}:${GITLAB_TOKEN}@git.imr.no/everyfish/continuous-learning.git"
 
-          # 4) Push all branches + tags (mirror), then upload the LFS blobs.
-          git push --mirror gitlab
+          # 4) Upload LFS blobs FIRST. GitLab's pre-receive hook rejects any push whose
+          #    referenced LFS objects are not already present, so the blobs must arrive
+          #    before the refs that point at them. Then push all branches + tags.
           git lfs push --all gitlab
+          git push --mirror gitlab
