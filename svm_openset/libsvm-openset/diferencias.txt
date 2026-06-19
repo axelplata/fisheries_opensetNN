@@ -1,0 +1,56 @@
+160a161
+> 				fprintf(output,"%g,%g,%g\n",target_label,predict_label,max_prob);
+167c168
+< 				if(max_prob < model->param.openset_min_probability)
+---
+> 				if(max_prob < model->param.openset_min_probability){
+169c170,172
+< 				else
+---
+> 			fprintf(output,"%d,%d,%g\n",99,99,max_prob);}
+> 				else{
+> 			 fprintf(output,"%d,%g,%g\n",99,predict_label,max_prob);
+171,172c174,175
+< 			}
+<             fprintf(output,"%g: %g\n",predict_label,max_prob);
+---
+> 			}}
+>             //fprintf(output,"%g: %g\n",predict_label,max_prob);
+201a205
+> 				fprintf(output,"%g,%g\n",target_label,predict_label);
+208c212,213
+<                 if(max_prob < model->param.openset_min_probability)
+---
+> 		
+>                 if(max_prob < model->param.openset_min_probability){
+210c215,216
+<                 else
+---
+> 		    fprintf(output,"%d,%d\n",99,99);}
+>                 else{
+211a218,219
+> 		    fprintf(output,"%d,%g\n",99,predict_label);}
+> 		    
+213c221
+<             fprintf(output,"%g",predict_label);
+---
+>             
+231c239
+<             fprintf(output,"%g",predict_label);
+---
+>             fprintf(output,"%g, ",predict_label);
+441c449
+<             printf("Recognition Accuracy = %g%%\n",(rec_acc*100));
+---
+>             printf("Recognition_Accuracy = %g\n" ,(rec_acc*100));
+451,452c459,460
+<             printf("  Precision=%lf,   Recall=%lf   Fmeasure=%lf\n",precision, recall, fmeasure);
+<             printf("  Total tests=%d, True pos %d True Neg %d, False Pos %d, False neg %d\n",
+---
+>             printf("  Precision = %lf ,   Recall = %lf   Fmeasure = %lf\n",precision, recall, fmeasure);
+>             printf("  Total tests=%d , True pos %d True Neg %d  False Pos %d  False neg %d\n",
+544a553
+> 		  fprintf(stderr,"P is here%g\n",openset_min_probability);
+601a611,612
+>     
+>     fprintf(stderr,"seraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa %g\n",openset_min_probability); 

@@ -1,0 +1,12 @@
+Folder "features" contains the features used for the experiments extracted with Resnet-18 tained on ImageNet
+MGPL works with images and extract its own features
+
+SVM-based methods were copied from the docker container. Need to be checked. The latest docker from ultralytics was used in January 2025.
+
+
+OSNN notebook
+
+
+MGPL
+Read README file for MGPL and check if it works
+

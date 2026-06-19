@@ -1,0 +1,55 @@
+Online file with results
+
+https://docs.google.com/spreadsheets/d/1haOZtj0ZuCEnvrDrCFPcofdl5Yy3yp94aioPSpOErhQ/edit?gid=1094504089#gid=1094504089
+
+
+Species were reordered according to the number of instances. So, the new order/index is:
+
+FDWEIndex	OpensetIndex	Train	val	test	Total
+0		0 P. platessa	876	206	101	1183
+1		1 S. solea	170	49	23	242
+3		2 E. gurnardus	224	61	25	310
+5		3 L. limanda	122	35	15	172
+2		4 S. rhombus	49	7	3	59
+4		5 S. maximus	35	28	11	74
+6		6 A. radiata	40	13	6	59
+7		7 M. merlangus	59	20	8	87
+8		8 S. canicula	20	5	5	30
+
+
+FDWE indexes used next
+1. Majority classes as known (>=122 instances for training), five runs for random unknowns??: 
+	- splits = {'known':[0,1,3,5], 'unknown_val':[2,4], 'unknown_test':[6,7,8]} Visually Similar in the val
+	- splits = {'known':[0,1,3,5], 'unknown_val':[6,8], 'unknown_test':[2,4,7]} Different visual in the val
+	- splits = {'known':[0,1,3,5], 'unknown_val':[2,7], 'unknown_test':[4,6,8]} Rhombus in val, Merlangus in test
+	
+Two more added
+	- splits = {'known':[0,1,3,5], 'unknown_val':[4,8], 'unknown_test':[2,6,7]} 
+	- splits = {'known':[0,1,3,5], 'unknown_val':[6,7], 'unknown_test':[2,4,8]} 
+	
+	ToDo complete 5 experiments to have some error bar
+
+
+
+
+
+
+Discuss about this for future experiments
+2. Can we create a balanced training dataset?
+	- We could use the same previous known classes, but using the same #instances, For example: using 122 or 100 samples per specie
+	- then we can use the same splits from point 1.
+
+
+3. Minority as known? 5runs with random classes for unknowns
+	- splits = {'known':[2,4,6,7], 'unknown_val':[1,5], 'unknown_test':[0,3,8]}
+	- splits = {'known':[2,4,6,7], 'unknown_val':[3,8], 'unknown_test':[0,1,5]}
+	- splits = {'known':[2,4,6,7], 'unknown_val':[0,5], 'unknown_test':[1,3,8]}  
+
+
+4. Use 5 random splits? keeping the proportion 4-2-3?
+	- splits = {'known':[1,7,4,8], 'unknown_val':[3,6], 'unknown_test':[5,0,2]}
+	- splits = {'known':[0,1,2,6], 'unknown_val':[7,5], 'unknown_test':[8,3,4]}
+	- splits = {'known':[1,5,7,8], 'unknown_val':[2,4], 'unknown_test':[0,3,6]}
+	- splits = {'known':[2,4,7,8], 'unknown_val':[0,3], 'unknown_test':[1,5,6]}
+	- splits = {'known':[3,4,6,8], 'unknown_val':[0,2], 'unknown_test':[1,5,7]}
+
