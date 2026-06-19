@@ -1,0 +1,52 @@
+name: Mirror to GitLab (git.imr.no)
+
+# Mirrors this GitHub repo (source of truth) to the GitLab project
+# git.imr.no/everyfish/continuous-learning on every push, INCLUDING Git LFS objects.
+#
+# Required repository secrets (Settings -> Secrets and variables -> Actions):
+#   GITLAB_USERNAME  your git.imr.no username (or access-token name)
+#   GITLAB_TOKEN     a git.imr.no token with write access to the repository
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+  workflow_dispatch:        # lets you trigger a mirror manually from the Actions tab
+
+# Never let two mirror runs push at the same time.
+concurrency:
+  group: mirror-to-gitlab
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror branches, tags and LFS objects to GitLab
+        env:
+          GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SRC_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          git lfs install
+
+          # 1) Bare mirror clone of the source GitHub repo (works for public or private).
+          git clone --mirror "https://x-access-token:${GITHUB_TOKEN}@github.com/${SRC_REPO}.git" src.git
+          cd src.git
+
+          # 2) Download every LFS object referenced by any ref into the local LFS store.
+          git lfs fetch --all
+
+          # 3) Point a 'gitlab' remote at the destination (token kept out of the URL log).
+          git remote add gitlab "https://${GITLAB_USERNAME}:${GITLAB_TOKEN}@git.imr.no/everyfish/continuous-learning.git"
+
+          # 4) Push all branches + tags (mirror), then upload the LFS blobs.
+          git push --mirror gitlab
+          git lfs push --all gitlab
