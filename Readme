@@ -2,12 +2,13 @@
 
 ## Description
 
+Novelty Recognition: Fish Species Classification via Open-Set Recognition
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
+- [License](#license)axel.streit@wur.nl - SINTEF
 - [Acknowledgement](#acknowledgement)
 - [Contact](#contact)
 
@@ -30,7 +31,7 @@ CC BY-SA 4.0
 
 ## Acknowledgement
 
-!\[European Union logo and funding acknowledgement](assets/EN_FundedbytheEU_RGB_POS.png) (***OR CHOOSE ANOTHER PLACE TO PUT THE LOGO***)
+!\[European Union logo and funding acknowledgement](assets/en-co-fundedvertical-rgb-pos.png)
  This work was funded by the European Maritime and Fisheries Fund (contract number16302) under the Fully Documented Fisheries (FDF) project, and the European Union Horizon Europe under the EVERYFISH project (grant agreement no. 101059892) and OptiFish project (grant agreement no. 101136674).
 
 ## Contact
