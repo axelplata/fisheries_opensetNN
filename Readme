@@ -1,8 +1,23 @@
+# Continuous learning
+
+## Description
+
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Acknowledgement](#acknowledgement)
+- [Contact](#contact)
+
+## Installation
+
+## Usage
 Folder "features" contains the features used for the experiments extracted with Resnet-18 tained on ImageNet
 MGPL works with images and extract its own features
 
 SVM-based methods were copied from the docker container. Need to be checked. The latest docker from ultralytics was used in January 2025.
-
 
 OSNN notebook
 
@@ -10,3 +25,13 @@ OSNN notebook
 MGPL
 Read README file for MGPL and check if it works
 
+## License
+CC BY-SA 4.0
+
+## Acknowledgement
+
+!\[European Union logo and funding acknowledgement](assets/EN_FundedbytheEU_RGB_POS.png) (***OR CHOOSE ANOTHER PLACE TO PUT THE LOGO***)
+ This work was funded by the European Maritime and Fisheries Fund (contract number16302) under the Fully Documented Fisheries (FDF) project, and the European Union Horizon Europe under the EVERYFISH project (grant agreement no. 101059892) and OptiFish project (grant agreement no. 101136674).
+
+## Contact
+axel.streit@wur.nl
